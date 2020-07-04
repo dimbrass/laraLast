@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/content-manager', 'ContentController@index')->name('Content-manager');
+//Route::resource('content', 'ContentController'); ПЕРЕИМЕНУЙ. СЛЕТАЮТ РОУТЫ ПАПКИ /content !!!
+
+Route::resources([
+    'test' => 'testController',
+    'content/page' => 'content\PageController',
+    'content/home' => 'content\HomeController',
+]);

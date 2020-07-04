@@ -5,10 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Content manager</div>
 
                 <div class="card-body">
-                    <a href="/content-manager">Content manager</a>
+
+                    <a href="/content">Content manager</a>
+
+                    <br><br><hr>
+
+                    <h4>Content Page INDEX</h4>                    
+
                 </div>
                 
             </div>
