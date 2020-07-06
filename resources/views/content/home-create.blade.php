@@ -14,7 +14,7 @@
 
                     <h4>Создать новую страницу</h4>
 
-                    <form name="content-test" action="{{ route('home.store') }}" method="POST">
+                    <form name="home-create" action="{{ route('home.store') }}" method="POST">
                         @csrf                    
                         <label>name</label>
                         <input name="name" style="width: 100%">

@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('content\create-page');
+        return view('content\home-create');
     }
 
     /**

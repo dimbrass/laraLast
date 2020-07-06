@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class contentHomeSeeder extends Seeder
+class contentKbmRestoreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,14 +11,22 @@ class contentHomeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('co_home__topslider')->insert([
+        DB::table('co_kbm-restore__how-to-restore')->insert([
             [
-            'title' => 'co_home__topslider title'
+            'title' => 'co_kbm-restore__how-to-restore title',
+            'top' => 'co_kbm-restore__how-to-restore top',
+            'title-2' => 'co_kbm-restore__how-to-restore title-2',
+            'item-1' => 'co_kbm-restore__how-to-restore item-1',
+            'item-2' => 'co_kbm-restore__how-to-restore item-2',
+            'item-3' => 'co_kbm-restore__how-to-restore item-3',
+            'paragraph1' => 'co_kbm-restore__how-to-restore paragraph1',
+            'paragraph2' => 'co_kbm-restore__how-to-restore paragraph2',
+            'bold-paragraph' => 'co_kbm-restore__how-to-restore bold-paragraph'
             ],
         ]);
-        DB::table('co_home__insurance')->insert([
+        DB::table('co_kbm-restore__restore-by-sb')->insert([
             [
-            'link' => 'co_home__topslider link'
+            'title' => 'co_kbm-restore__restore-by-sb title'
             ],
         ]);
         DB::table('co_home__our-servises-title')->insert([

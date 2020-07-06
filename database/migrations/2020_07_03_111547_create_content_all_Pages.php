@@ -13,67 +13,62 @@ class CreateContentAllPages extends Migration
      */
     public function up()
     {
-        Schema::create('content__test__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__home', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__page__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Osago', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__home__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Tech-inspection', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Osago__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Tech-inspection-item', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Tech-inspection__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Kbm-check', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Tech-inspection-item__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Kbm-restore', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Kbm-check__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Kbm-restore-result', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Kbm-restore__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Mulct-check', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Mulct-check__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Policy-check', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Policy-check__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__User-agreement', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__User-agreement__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Site-map', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
         });
-        Schema::create('content__Site-map__page__', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('title')->nullable();
-        });
-        Schema::create('content__Our-offices__page__', function (Blueprint $table) {
+        Schema::create('co_all-pages__Our-offices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('title')->nullable();
@@ -87,17 +82,18 @@ class CreateContentAllPages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content__page__page__');
-        Schema::dropIfExists('content__home__page__');
-        Schema::dropIfExists('content__Osago__page__');
-        Schema::dropIfExists('content__Tech-inspection__page__');
-        Schema::dropIfExists('content__Tech-inspection-item__page__');
-        Schema::dropIfExists('content__Kbm-check__page__');
-        Schema::dropIfExists('content__Kbm-restore__page__');
-        Schema::dropIfExists('content__Mulct-check__page__');
-        Schema::dropIfExists('content__Policy-check__page__');
-        Schema::dropIfExists('content__User-agreement__page__');
-        Schema::dropIfExists('content__Site-map__page__');
-        Schema::dropIfExists('content__Our-offices__page__');
+        Schema::dropIfExists('co_all-pages__test');
+        Schema::dropIfExists('co_all-pages__page');
+        Schema::dropIfExists('co_all-pages__home');
+        Schema::dropIfExists('co_all-pages__Osago');
+        Schema::dropIfExists('co_all-pages__Tech-inspection');
+        Schema::dropIfExists('co_all-pages__Tech-inspection-item');
+        Schema::dropIfExists('co_all-pages__Kbm-check');
+        Schema::dropIfExists('co_all-pages__Kbm-restore');
+        Schema::dropIfExists('co_all-pages__Mulct-check');
+        Schema::dropIfExists('co_all-pages__Policy-check');
+        Schema::dropIfExists('co_all-pages__User-agreement');
+        Schema::dropIfExists('co_all-pages__Site-map');
+        Schema::dropIfExists('co_all-pages__Our-offices');
     }
 }

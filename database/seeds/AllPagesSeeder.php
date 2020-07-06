@@ -11,79 +11,73 @@ class AllPagesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('content__test__page__')->insert([
-            [
-            'name' => 'test',         
-            'title' => 'T E S T',
-            ],
-        ]);
-        DB::table('content__page__page__')->insert([
-            [
-            'name' => 'page',         
-            'title' => 'P A G E',
-            ],
-        ]);
-        DB::table('content__home__page__')->insert([
+        DB::table('co_all-pages__home')->insert([
             [
             'name' => 'home',         
             'title' => 'Главная страница',
             ],
         ]);
-        DB::table('content__osago__page__')->insert([
+        DB::table('co_all-pages__osago')->insert([
             [
             'name' => 'osago',
             'title' => 'Расчет ОСАГО',
             ],
         ]);
-        DB::table('content__tech-inspection__page__')->insert([
+        DB::table('co_all-pages__tech-inspection')->insert([
             [
             'name' => 'tech-inspection',   
             'title' => 'Техосмотр', 
             ],
         ]);
-        DB::table('content__tech-inspection-item__page__')->insert([
+        DB::table('co_all-pages__tech-inspection-item')->insert([
             [
             'name' => 'tech-inspection-item',         
             'title' => 'Страница одного пункта техосмотра',
             ],
         ]);
-        DB::table('content__kbm-check__page__')->insert([
+        DB::table('co_all-pages__kbm-check')->insert([
             [
             'name' => 'kbm-check',    
-            'title' => 'КМБ проверить',
+            'title' => 'Проверка КМБ',
             ],
         ]);
-        DB::table('content__kbm-restore__page__')->insert([
+        DB::table('co_all-pages__kbm-restore')->insert([
             [
             'name' => 'kbm-restore',         
-            'title' => 'КМБ восстановить',
+            'title' => 'Восстановление КМБ',
             ],
         ]);
-        DB::table('content__mulct-check__page__')->insert([
+        DB::table('co_all-pages__kbm-restore-result')->insert([
+            [
+            'name' => 'kbm-restore-result',         
+            'title' => 'Восстановление КМБ-результат',
+            ],
+        ]);
+        DB::table('co_all-pages__mulct-check')->insert([
             [
             'name' => 'mulct-check',    
             'title' => 'Проверка штрафов',
             ],
         ]);
-        DB::table('content__policy-check__page__')->insert([
+        DB::table('co_all-pages__policy-check')->insert([
             [
             'name' => 'policy-check',       
             'title' => 'Проверка полиса',  
             ],
         ]);
-        DB::table('content__user-agreement__page__')->insert([
+        DB::table('co_all-pages__user-agreement')->insert([
             [
             'name' => 'user-agreement',    
             'title' => 'Пользовательское соглашение',
             ],
         ]);
-        DB::table('content__site-map__page__')->insert([
+        DB::table('co_all-pages__site-map')->insert([
             [
             'name' => 'site-map',
             'title' => 'Карта сайта',         
             ],
         ]);
-        DB::table('content__our-offices__page__')->insert([
+        DB::table('co_all-pages__our-offices')->insert([
             [
             'name' => 'our-offices',
             'title' => 'Наши офисы',    
