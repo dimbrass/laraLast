@@ -29,8 +29,8 @@ class CreateContentKbmCheckBlocks extends Migration
         });
         Schema::create('co_kbm-check__whattodo-item-1', function (Blueprint $table) {
             $table->id();
-            $table->string('link')->nullable();
             $table->string('title')->nullable();
+            $table->string('link')->nullable();
         });
         Schema::create('co_kbm-check__whattodo-item-2', function (Blueprint $table) {
             $table->id();

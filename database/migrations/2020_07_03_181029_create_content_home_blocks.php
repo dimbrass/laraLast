@@ -13,10 +13,6 @@ class CreateContentHomeBlocks extends Migration
      */
     public function up()
     {
-        Schema::create('co_home__topslider', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->nullable();
-        });
         Schema::create('co_home__insurance', function (Blueprint $table) {
             $table->id();
             $table->string('link')->nullable();

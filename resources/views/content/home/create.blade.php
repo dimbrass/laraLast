@@ -8,13 +8,11 @@
                 <div class="card-header">Content manager</div>
 
                 <div class="card-body">
-                    <a href="/content">Content manager</a>
+                    <a href="/content/home/page">Home index</a> 
+                    <br><hr>
+                    <h4>Home create</h4>
 
-                    <br><br><hr>
-
-                    <h4>Создать новую страницу</h4>
-
-                    <form name="home-create" action="{{ route('home.store') }}" method="POST">
+                    <form name="create" action="{{ route('page.store') }}" method="POST">
                         @csrf                    
                         <label>name</label>
                         <input name="name" style="width: 100%">

@@ -12,8 +12,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(UserSeeder::class);
+         $this->call(contentBlocks::class);
          //$this->call(coPageSeeder::class);
          $this->call(AllPagesSeeder::class);
          $this->call(contentHomeSeeder::class);
+         $this->call(contentKbmCheckSeeder::class);
+         $this->call(contentKbmRestoreSeeder::class);
     }
 }

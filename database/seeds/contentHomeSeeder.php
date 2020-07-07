@@ -11,60 +11,55 @@ class contentHomeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('co_home__topslider')->insert([
-            [
-            'title' => 'co_home__topslider title'
-            ],
-        ]);
         DB::table('co_home__insurance')->insert([
             [
-            'link' => 'co_home__topslider link'
+            'link' => 'link'
             ],
         ]);
         DB::table('co_home__our-servises-title')->insert([
             [
-            'title' => 'co_home__our-servises-title title'
+            'title' => 'title title'
             ],
         ]);
         DB::table('co_home__our-servises')->insert([
             [
-            'title' => 'co_home__our-servises title',
-            'link' => 'co_home__our-servises link'
+            'title' => 'title',
+            'link' => 'link'
             ],
         ]);
         DB::table('co_home__autowish-about')->insert([
             [
-            'title' => 'co_home__autowish-about title',
-            'paragraph1' => 'co_home__autowish-about paragraph1',
-            'paragraph2' => 'co_home__autowish-about paragraph2',
+            'title' => 'title',
+            'paragraph1' => 'paragraph1',
+            'paragraph2' => 'paragraph2',
             ],
         ]);
         DB::table('co_home__autowish-benefits')->insert([
             [
-            'bold' => 'co_home__autowish-benefits bold',
-            'text' => 'co_home__autowish-benefits text'
+            'bold' => 'bold',
+            'text' => 'text'
             ],
         ]);
         DB::table('co_home__autowish-servises-title')->insert([
             [
-            'title' => 'co_home__autowish-servises-title title'
+            'title' => 'title'
             ],
         ]);
         DB::table('co_home__autowish-servises')->insert([
             [
-            'title' => 'co_home__autowish-servises title',
-            'link' => 'co_home__autowish-servises link'
+            'title' => 'title',
+            'link' => 'link'
             ],
         ]);
         DB::table('co_home__smart-search')->insert([
             [
-            'title' => 'co_home__smart-searchtitle',
-            'examples' => 'co_home__smart-search examples'
+            'title' => 'title',
+            'examples' => 'examples'
             ],
         ]);
         DB::table('co_home__soc-media')->insert([
             [
-            'title' => 'co_home__soc-media title'
+            'title' => 'title'
             ],
         ]);
     }

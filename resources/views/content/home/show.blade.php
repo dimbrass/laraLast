@@ -8,20 +8,15 @@
                 <div class="card-header">Content manager</div>
 
                 <div class="card-body">
-
-                    <a href="/content">Content manager</a>
+                    <a href="/content/home/page">Index</a> <br>
+                    <a href="/content/home/page/create">Create</a> <br>
+                    <a href="/content/home/page/{{ $page->id }}/edit">Edit</a>
 
                     <br><br><hr>
 
-                    <h4>Home index</h4>
-                    
-                    @foreach ($homes as $home)
+                    <h4>Home show</h4>
 
-                    <p>name: {{ $home->name }} , title: {{ $home->title }}</p>
-
-                    @endforeach
-                    
-
+                    <p>name: {{ $page->name }} , title: {{ $page->title }}</p>
                 </div>
                 
             </div>

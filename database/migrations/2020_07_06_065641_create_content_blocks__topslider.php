@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoPagesTable extends Migration
+class CreateContentBlocksTopslider extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCoPagesTable extends Migration
      */
     public function up()
     {
-        // Schema::create('co_pages', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('name');
-        //     $table->string('title')->nullable();
-        //     $table->timestamps();
-        // });
+        Schema::create('co_blocks__topslider', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->nullable();
+        });
     }
 
     /**
@@ -28,6 +26,6 @@ class CreateCoPagesTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('co_pages');
+        Schema::dropIfExists('content_blocks__topslider');
     }
 }

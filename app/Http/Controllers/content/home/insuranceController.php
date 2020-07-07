@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\content\home;
 
-use App\Content;
+use App\Http\Controllers\Controller;
+use App\Models\content\home\insurance;
 use Illuminate\Http\Request;
 
-use App\coPage;
-use App\coBlock;
-
-class ContentController extends Controller
+class insuranceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $coPages = coPage::all();
-        $coBlocks = coBlock::all();
-
-        return view('content-manager', ['coPages' => $coPages, 'coBlocks' => $coBlocks]);
+        //
     }
 
     /**
@@ -47,10 +42,10 @@ class ContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Content  $content
+     * @param  \App\Models\content\home\insurance  $insurance
      * @return \Illuminate\Http\Response
      */
-    public function show(Content $content)
+    public function show(insurance $insurance)
     {
         //
     }
@@ -58,10 +53,10 @@ class ContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Content  $content
+     * @param  \App\Models\content\home\insurance  $insurance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Content $content)
+    public function edit(insurance $insurance)
     {
         //
     }
@@ -70,10 +65,10 @@ class ContentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Content  $content
+     * @param  \App\Models\content\home\insurance  $insurance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(Request $request, insurance $insurance)
     {
         //
     }
@@ -81,10 +76,10 @@ class ContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Content  $content
+     * @param  \App\Models\content\home\insurance  $insurance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Content $content)
+    public function destroy(insurance $insurance)
     {
         //
     }
