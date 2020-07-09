@@ -15,6 +15,7 @@ class CreateContentHomeBlocks extends Migration
     {
         Schema::create('co_home__insurance', function (Blueprint $table) {
             $table->id();
+            $table->integer('page_id')->default('1');
             $table->string('link')->nullable();
         });
         Schema::create('co_home__our-servises-title', function (Blueprint $table) {

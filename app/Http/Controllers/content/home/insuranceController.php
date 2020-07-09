@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\content\home;
 
 use App\Http\Controllers\Controller;
+use App\Models\content\home\Page;
 use App\Models\content\home\insurance;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,9 @@ class insuranceController extends Controller
      */
     public function index()
     {
-        //
+        $insurance = Insurance::all();  
+               // $page = $insurance->page; dd($page);->first()
+        return view('content\home\blocks\insurance\index', ['insurance' => $insurance]);
     }
 
     /**
@@ -25,7 +28,7 @@ class insuranceController extends Controller
      */
     public function create()
     {
-        //
+        return view('content\home\blocks\insurance\create');
     }
 
     /**
@@ -36,7 +39,12 @@ class insuranceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insurance = new Insurance;
+        $insurance->page_id = $request->page_id;
+        $insurance->link = $request->link;
+        $insurance->save();
+
+        return redirect()->route('insurance.index');
     }
 
     /**
@@ -47,7 +55,7 @@ class insuranceController extends Controller
      */
     public function show(insurance $insurance)
     {
-        //
+        return view('content\home\blocks\insurance\show', ['block' => $insurance]);
     }
 
     /**
@@ -58,7 +66,7 @@ class insuranceController extends Controller
      */
     public function edit(insurance $insurance)
     {
-        //
+        return view('content\home\blocks\insurance\edit', ['block' => $insurance]);
     }
 
     /**
@@ -70,7 +78,11 @@ class insuranceController extends Controller
      */
     public function update(Request $request, insurance $insurance)
     {
-        //
+        $insurance->page_id = $request->page_id;
+        $insurance->link = $request->link;
+        $insurance->save();
+        
+        return redirect()->route('insurance.index');
     }
 
     /**
@@ -81,6 +93,8 @@ class insuranceController extends Controller
      */
     public function destroy(insurance $insurance)
     {
-        //
+        $insurance->delete();
+        
+        return redirect()->route('insurance.index');
     }
 }

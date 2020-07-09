@@ -7,49 +7,78 @@
             <div class="card">
                 <div class="card-header">Content manager</div>
 
-                <div class="card-body">
+                <div class="card-body">                
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-condensed table-striped">
-                            <thead>
-                                <th>ID</th>
-                                <th>NAME</th>
-                                <th>TITLE</th>
-                                <th>ACTION</th>
-                            </thead>
-                            <tbody>
-                                @foreach($pages as $row)
-                                <tr>
-                                    <td>{{$row->id }}</td>
-                                    <td>{{$row->name }}</td>
-                                    <td>{{$row->title }}</td>
-                                    <td>                                    
-                                        <form action="{{ route('page.show', $row->id) }}" method="GET">
-                                            @csrf @method('GET')
-                                            <button class="btn btn-success btn-block btn-sm" type="submit">Show</button>
-                                        </form>
-                                    
-                                        <form action="{{ route('page.edit', $row->id) }}" method="GET">
-                                            @csrf @method('GET')
-                                            <button class="btn btn-warning btn-block btn-sm" type="submit">Edit</button>
-                                        </form>
+                    Страница:
+                    <table class="table table-bordered table-condensed table-striped">
+                        <tr>
+                            <td>{{$page['id'] }}</td>
+                            <td>    
+                                name: {{$page['name'] }}  <br>
+                                title: {{$page['title'] }}
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <form action="{{ route('page.create') }}" method="GET">
+                                        @csrf @method('GET')
+                                        <button class="btn btn-primary btn-sm" type="submit">Create</button>
+                                    </form>
+                                            
+                                    <form action="{{ route('page.show', $page['id']) }}" method="GET">
+                                        @csrf @method('GET')
+                                        <button class="btn btn-success btn-sm" type="submit">Show</button>
+                                    </form>
+                                
+                                    <form action="{{ route('page.edit', $page['id']) }}" method="GET">
+                                        @csrf @method('GET')
+                                        <button class="btn btn-warning btn-sm" type="submit">Edit</button>
+                                    </form>
 
-                                        <form action="{{ route('page.destroy', $row->id) }}" method="post">
-                                            @csrf @method('DELETE')
-                                            <button class="btn btn-danger btn-block btn-sm" type="submit">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                    <form action="{{ route('page.destroy', $page['id']) }}" method="post">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                                  
 
-                    <form action="{{ route('page.create') }}" method="GET">
-                        @csrf @method('GET')
-                        <button class="btn btn-primary btn-block btn-sm" type="submit">Create</button>
-                    </form>
+                    Блоки:
+                    <table class="table table-bordered table-condensed table-striped">
+                        @foreach($pageBlocks as $pageBlock)
+                        <tr>
+                            <td>{{$pageBlock['id'] }}</td>
+                            <td>    
+                                title: {{$pageBlock['link'] }}
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <form action="{{ route('insurance.create') }}" method="GET">
+                                        @csrf @method('GET')
+                                        <button class="btn btn-primary btn-sm" type="submit">Create</button>
+                                    </form>
+                                            
+                                    <form action="{{ route('insurance.show', $page['id']) }}" method="GET">
+                                        @csrf @method('GET')
+                                        <button class="btn btn-success btn-sm" type="submit">Show</button>
+                                    </form>
+                                
+                                    <form action="{{ route('page.edit', $page['id']) }}" method="GET">
+                                        @csrf @method('GET')
+                                        <button class="btn btn-warning btn-sm" type="submit">Edit</button>
+                                    </form>
 
+                                    <form action="{{ route('page.destroy', $page['id']) }}" method="post">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>                  
+                    
                 </div>
                 
             </div>

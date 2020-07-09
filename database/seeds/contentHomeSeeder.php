@@ -13,12 +13,13 @@ class contentHomeSeeder extends Seeder
     {
         DB::table('co_home__insurance')->insert([
             [
+            'page_id' => '1',
             'link' => 'link'
             ],
         ]);
         DB::table('co_home__our-servises-title')->insert([
             [
-            'title' => 'title title'
+            'title' => 'title'
             ],
         ]);
         DB::table('co_home__our-servises')->insert([

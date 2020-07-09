@@ -11,8 +11,8 @@ class Page extends Model
   
     public $timestamps = false;
   
-    public function co_home__insurance()
+    public function insurance()
     {
-        return $this->hasOne('home\insurance');
+        return $this->hasOne('App\Models\content\home\insurance');
     }
 }

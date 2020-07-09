@@ -4,6 +4,7 @@ namespace App\Http\Controllers\content\home;
 
 use App\Http\Controllers\Controller;
 use App\Models\content\home\Page;
+use App\Models\content\home\insurance;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,8 +16,13 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
-        return view('content\home\index', ['pages' => $pages]);
+        // $pages = new Page;
+        // $pages = $pages->where('id', '1')->get();   
+
+        $page = Page::all()->first();
+        $pageBlocks [] = $page->insurance;    // dd($pages, $pagesBlocks); 
+  
+        return view('content\home\index', ['page' => $page, 'pageBlocks' => $pageBlocks]);
     }
 
     /**
@@ -42,9 +48,7 @@ class PageController extends Controller
         $page->title = $request->title;
         $page->save();
         
-        $pages = Page::all();
-        
-        return view('content\home\index', ['pages' => $pages]);
+        return redirect()->route('page.index');
     }
 
     /**
@@ -81,9 +85,8 @@ class PageController extends Controller
         $page->name = $request->name;
         $page->title = $request->title;
         $page->save();
-
-        $page = Page::find(1);
-        return view('content\home\edit', ['page' => $page]);
+        
+        return redirect()->route('page.index');
     }
 
     /**
@@ -95,8 +98,7 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         $page->delete();
-
-        $pages = Page::all();
-        return view('content\home\index', ['pages' => $pages]);
+        
+        return redirect()->route('page.index');
     }
 }
