@@ -48,9 +48,12 @@
                     <table class="table table-bordered table-condensed table-striped">
                         @foreach($pageBlocks as $pageBlock)
                         <tr>
-                            <td>{{$pageBlock['id'] }}</td>
+                            <td>
+                                <a href="{{route($pageBlock['name'].'.index')}}" title="block.index">{{$pageBlock['name'] }}</a>
+                            </td>
                             <td>    
-                                title: {{$pageBlock['link'] }}
+                                id: {{$pageBlock['block']['id'] }}; <br>
+                                link: {{$pageBlock['block']['link'] }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group">

@@ -20,7 +20,7 @@ class PageController extends Controller
         // $pages = $pages->where('id', '1')->get();   
 
         $page = Page::all()->first();
-        $pageBlocks [] = $page->insurance;    // dd($pages, $pagesBlocks); 
+        $pageBlocks [] = ['block' => $page->insurance, 'name' => 'insurance'];    // dd($pages, $pagesBlocks); 
   
         return view('content\home\index', ['page' => $page, 'pageBlocks' => $pageBlocks]);
     }

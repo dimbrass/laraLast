@@ -9,42 +9,33 @@
 
                 <div class="card-body">                
 
-                    <a href="/content/all-pages">All pages</a> <br>   
-                    <a href="/content/home/page">Page with all blocks</a> <br>             
-                    <hr>
-
-                    Блок:
+                    Страницы:
                     <table class="table table-bordered table-condensed table-striped">
-                        @foreach($insurance as $block)
+                        @foreach($pages as $page)
                         <tr>
-                            <td> Страница: <br>
-                                id = {{$block->page['id'] }}  <br>
-                                name: {{$block->page['name'] }}  <br> 
-                                title: {{$block->page['title'] }}
-                            </td>
+                            <td>{{$page['id'] }}</td>
                             <td>    
-                                id: {{$block['id'] }} <br>
-                                page_id: {{$block['page_id'] }} <br> 
-                                link: {{$block['link'] }}
+                                name: {{$page['name'] }}  <br>
+                                title: {{$page['title'] }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group">
-                                    <form action="{{ route('insurance.create') }}" method="GET">
+                                    <form action="{{ route('page.create') }}" method="GET">
                                         @csrf @method('GET')
                                         <button class="btn btn-primary btn-sm" type="submit">Create</button>
                                     </form>
                                             
-                                    <form action="{{ route('insurance.show', $block['id']) }}" method="GET">
+                                    <form action="{{ route('page.show', $page['id']) }}" method="GET">
                                         @csrf @method('GET')
                                         <button class="btn btn-success btn-sm" type="submit">Show</button>
                                     </form>
                                 
-                                    <form action="{{ route('insurance.edit', $block['id']) }}" method="GET">
+                                    <form action="{{ route('page.edit', $page['id']) }}" method="GET">
                                         @csrf @method('GET')
                                         <button class="btn btn-warning btn-sm" type="submit">Edit</button>
                                     </form>
 
-                                    <form action="{{ route('insurance.destroy', $block['id']) }}" method="post">
+                                    <form action="{{ route('page.destroy', $page['id']) }}" method="post">
                                         @csrf @method('DELETE')
                                         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                                     </form>
@@ -52,7 +43,7 @@
                             </td>
                         </tr>
                         @endforeach
-                    </table>                  
+                    </table>                            
                     
                 </div>
                 

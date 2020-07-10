@@ -24,8 +24,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/content-manager', 'ContentController@index')->name('Content-manager');
 //Route::resource('content', 'ContentController'); ПЕРЕИМЕНУЙ. СЛЕТАЮТ РОУТЫ ПАПКИ /content !!!
 
-Route::get('/content/all-pages', 'HomeController@index')->name('home');
+Route::get('/content/all-pages', 'content\AllPagesController@index')->name('all-pages');
 Route::resources([
     'content/home/page' => 'content\home\PageController',
     'content/home/insurance' => 'content\home\insuranceController',
+    'content/home/our-servises-title' => 'content\home\ourServisesTitleController',
+    'content/home/our-servises' => 'content\home\ourServisesController',
 ]);
