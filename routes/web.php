@@ -30,4 +30,10 @@ Route::resources([
     'content/home/insurance' => 'content\home\insuranceController',
     'content/home/our-servises-title' => 'content\home\ourServisesTitleController',
     'content/home/our-servises' => 'content\home\ourServisesController',
+    'content/home/autowish-about' => 'content\home\autowishAboutController',
+    'content/home/autowish-benefits' => 'content\home\autowishBenefitsController',
+    'content/home/autowish-servises-title' => 'content\home\autowishServisesTitleController',
+    'content/home/autowish-servises' => 'content\home\autowishServisesController',
+    'content/home/smart-search' => 'content\home\smartSearchController',
+    'content/home/soc-media' => 'content\home\socMediaController',
 ]);
