@@ -5,6 +5,14 @@ namespace App\Http\Controllers\content\home;
 use App\Http\Controllers\Controller;
 use App\Models\content\home\Page;
 use App\Models\content\home\insurance;
+use App\Models\content\home\ourServisesTitle;
+use App\Models\content\home\ourServises;
+use App\Models\content\home\autowishAbout;
+use App\Models\content\home\autowishBenefits;
+use App\Models\content\home\autowishServisesTitle;
+use App\Models\content\home\autowishServises;
+use App\Models\content\home\smartSearch;
+use App\Models\content\home\socMedia;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -16,12 +24,17 @@ class PageController extends Controller
      */
     public function index()
     {
-        // $pages = new Page;
-        // $pages = $pages->where('id', '1')->get();   
-
         $page = Page::all()->first();
-        $pageBlocks [] = ['block' => $page->insurance, 'name' => 'insurance'];    // dd($pages, $pagesBlocks); 
-  
+        $pageBlocks [] = ['block' => $page->insurance, 'name' => 'insurance'];
+        $pageBlocks [] = ['block' => $page->ourServisesTitle, 'name' => 'our-servises-title'];
+        $pageBlocks [] = ['block' => $page->ourServises, 'name' => 'our-servises'];
+        $pageBlocks [] = ['block' => $page->autowishAbout, 'name' => 'autowish-about'];
+        $pageBlocks [] = ['block' => $page->autowishBenefits, 'name' => 'autowish-benefits'];
+        $pageBlocks [] = ['block' => $page->autowishServisesTitle, 'name' => 'autowish-servises-title'];
+        $pageBlocks [] = ['block' => $page->autowishServises, 'name' => 'autowish-servises'];
+        $pageBlocks [] = ['block' => $page->smartSearch, 'name' => 'smart-search'];
+        $pageBlocks [] = ['block' => $page->socMedia, 'name' => 'soc-media'];      
+        
         return view('content\home\index', ['page' => $page, 'pageBlocks' => $pageBlocks]);
     }
 

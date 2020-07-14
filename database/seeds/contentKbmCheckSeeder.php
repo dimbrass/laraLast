@@ -18,8 +18,8 @@ class contentKbmCheckSeeder extends Seeder
             'paragraph1' => 'paragraph1',
             'paragraph2' => 'paragraph2',
             'paragraph3' => 'paragraph3',
-            'bold-paragraph1' => 'bold-paragraph',
-            'bold-paragraph2' => 'bold-paragraph'
+            'bold_paragraph1' => 'bold_paragraph1',
+            'bold_paragraph2' => 'bold_paragraph2'
             ],
         ]);
         DB::table('co_kbm-check__whattodo-title')->insert([

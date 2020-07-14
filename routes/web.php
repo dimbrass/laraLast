@@ -37,3 +37,20 @@ Route::resources([
     'content/home/smart-search' => 'content\home\smartSearchController',
     'content/home/soc-media' => 'content\home\socMediaController',
 ]);
+Route::resources([
+    'content/kbm-check/page' => 'content\kbmCheck\PageController',
+    // 'content/kbm-check/kbm-bonus-malus' => 'content\kbmCheck\kbmBonusMalusController',
+    // 'content/kbm-check/whattodo-title' => 'content\kbmCheck\whattodoTitleController',
+    // 'content/kbm-check/whattodo-item-1' => 'content\kbmCheck\whattodoItem_1Controller',
+    // 'content/kbm-check/whattodo-item-2' => 'content\kbmCheck\whattodoItem_2Controller',
+    // 'content/kbm-check/whattodo-item-3' => 'content\kbmCheck\whattodoItem_3Controller',
+]);
+Route::resources([
+    'content/kbm-restore/page' => 'content\kbmRestore\PageController',
+    // 'content/kbm-restore/how-to-restore' => 'content\kbmRestore\howToRestoreController',
+    // 'content/kbm-restore/restore-by-sb' => 'content\kbmRestore\restoreBySbController',
+    // 'content/kbm-restore/restore-by-insurance' => 'content\kbmRestore\restoreByInsuranceController',
+    // 'content/kbm-restore/restore-by-broker' => 'content\kbmRestore\restoreByBrokerController',
+    // 'content/kbm-restore/restore-by-rsa' => 'content\kbmRestore\restoreByRsaConrtroller',
+    // 'content/kbm-restore/restore-quick' => 'content\kbmRestore\restoreQuickContoller',
+]);
