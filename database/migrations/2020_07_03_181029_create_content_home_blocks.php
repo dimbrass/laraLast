@@ -15,53 +15,53 @@ class CreateContentHomeBlocks extends Migration
     {
         Schema::create('co_home__insurance', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('link')->nullable();
         });
         Schema::create('co_home__our-servises-title', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
         Schema::create('co_home__our-servises', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
             $table->string('link')->nullable();
         });
         Schema::create('co_home__autowish-about', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
             $table->text('paragraph1')->nullable();
             $table->text('paragraph2')->nullable();
         });
         Schema::create('co_home__autowish-benefits', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('bold')->nullable();
             $table->text('text')->nullable();
         });
         Schema::create('co_home__autowish-servises-title', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
         Schema::create('co_home__autowish-servises', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
             $table->string('link')->nullable();
         });
         Schema::create('co_home__smart-search', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
             $table->string('examples')->nullable();
         });
         Schema::create('co_home__soc-media', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
     }

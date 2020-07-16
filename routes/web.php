@@ -39,7 +39,7 @@ Route::resources([
 ]);
 Route::resources([
     'content/kbm-check/page' => 'content\kbmCheck\PageController',
-    // 'content/kbm-check/kbm-bonus-malus' => 'content\kbmCheck\kbmBonusMalusController',
+    'content/kbm-check/kbm-bonus-malus' => 'content\kbmCheck\kbmBonusMalusController',
     // 'content/kbm-check/whattodo-title' => 'content\kbmCheck\whattodoTitleController',
     // 'content/kbm-check/whattodo-item-1' => 'content\kbmCheck\whattodoItem_1Controller',
     // 'content/kbm-check/whattodo-item-2' => 'content\kbmCheck\whattodoItem_2Controller',

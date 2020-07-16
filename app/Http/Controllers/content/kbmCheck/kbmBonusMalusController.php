@@ -35,7 +35,12 @@ class kbmBonusMalusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
         $kbmBonusMalus = new kbmBonusMalus;
         $kbmBonusMalus->page_id = $request->page_id;
         $kbmBonusMalus->title = $request->title;
@@ -47,6 +52,8 @@ class kbmBonusMalusController extends Controller
         $kbmBonusMalus->bold_paragraph2 = $request->bold_paragraph2;
 
         $kbmBonusMalus->save(); 
+
+        return response('Successfully stored!', 200);
     }
 
     /**
@@ -78,18 +85,42 @@ class kbmBonusMalusController extends Controller
      * @param  \App\Models\content\kbmCheck\kbmBonusMalus  $kbmBonusMalus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kbmBonusMalus $kbmBonusMalus)
-    {
-        $kbmBonusMalus->page_id = $request->page_id;
-        $kbmBonusMalus->title = $request->title;
-        $kbmBonusMalus->top = $request->top;
-        $kbmBonusMalus->paragraph1 = $request->paragraph1;
-        $kbmBonusMalus->paragraph2 = $request->paragraph2;
-        $kbmBonusMalus->paragraph3 = $request->paragraph3;
-        $kbmBonusMalus->bold_paragraph1 = $request->bold_paragraph1;
-        $kbmBonusMalus->bold_paragraph2 = $request->bold_paragraph2;
+    public function update($id, Request $request, kbmBonusMalus $kbmBonusMalus)
+    {         
+        $table = $kbmBonusMalus->getTable();
+        // если в инъекции прилетел пустой объект то он есть но не имеет id
+        if (!$kbmBonusMalus->id) 
+        {
+            $kbmBonusMalus = kbmBonusMalus::find($id);             
+        } 
+        // если объект в базе найден
+        if ($kbmBonusMalus)
+        {           
+            // validate
+            $validatedData = $request->validateWithBag('content', [
+                'page_id' => 'required|numeric',
+            ]); 
+            
+            $kbmBonusMalus->page_id = $request->page_id;
+            $kbmBonusMalus->title = $request->title;
+            $kbmBonusMalus->top = $request->top; 
+            $kbmBonusMalus->paragraph1 = $request->paragraph1;
+            $kbmBonusMalus->paragraph2 = $request->paragraph2;
+            $kbmBonusMalus->paragraph3 = $request->paragraph3;
+            $kbmBonusMalus->bold_paragraph1 = $request->bold_paragraph1;
+            $kbmBonusMalus->bold_paragraph2 = $request->bold_paragraph2;
+            
+            $kbmBonusMalus->save(); 
+        }
+        else {
+             return response()->json([
+                'error' => 'Object does not exist in database',
+                'table' => $table,
+                'id' => $id,
+            ]);           
+        }
 
-        $kbmBonusMalus->save(); 
+        return response('Successfully updated!', 200);
     }
 
     /**
@@ -98,8 +129,27 @@ class kbmBonusMalusController extends Controller
      * @param  \App\Models\content\kbmCheck\kbmBonusMalus  $kbmBonusMalus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kbmBonusMalus $kbmBonusMalus)
-    {
-        $kbmBonusMalus->delete();
+    public function destroy($id, kbmBonusMalus $kbmBonusMalus)
+    {   
+        $table = $kbmBonusMalus->getTable();
+        // если в инъекции прилетел пустой объект то он есть но не имеет id
+        if (!$kbmBonusMalus->id) 
+        {
+            $kbmBonusMalus = kbmBonusMalus::all()->find($id); 
+        } 
+        // если объект в базе найден
+        if ($kbmBonusMalus) 
+        {  
+            $kbmBonusMalus->delete();        
+        }
+        else {
+            return response()->json([
+                'error' => 'Object does not exist in database',
+                'table' => $table,
+                'id' => $id,
+            ]);            
+        }
+
+        return response('Successfully deleted!', 200);
     }
 }

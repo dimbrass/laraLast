@@ -43,6 +43,8 @@ class autowishAboutController extends Controller
         $autowishAbout->paragraph2 = $request->paragraph2;
 
         $autowishAbout->save(); 
+
+        return response('Successfully stored!', 200);
     }
 
     /**
@@ -82,6 +84,8 @@ class autowishAboutController extends Controller
         $autowishAbout->paragraph2 = $request->paragraph2;
 
         $autowishAbout->save(); 
+
+        return response('Successfully updated!', 200);
     }
 
     /**
@@ -93,5 +97,7 @@ class autowishAboutController extends Controller
     public function destroy(autowishAbout $autowishAbout)
     {
         $autowishAbout->delete();
+
+        return response('Successfully deleted!', 200);
     }
 }

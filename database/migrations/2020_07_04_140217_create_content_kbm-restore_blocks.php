@@ -15,7 +15,7 @@ class CreateContentKbmRestoreBlocks extends Migration
     {
         Schema::create('co_kbm-restore__how-to-restore', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
             $table->text('top')->nullable();
             $table->string('title-2')->nullable();
@@ -28,27 +28,27 @@ class CreateContentKbmRestoreBlocks extends Migration
         });
         Schema::create('co_kbm-restore__restore-by-sb', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
         Schema::create('co_kbm-restore__restore-by-insurance', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
         Schema::create('co_kbm-restore__restore-by-broker', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
         Schema::create('co_kbm-restore__restore-by-rsa', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
         Schema::create('co_kbm-restore__restore-quick', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id')->default('1');
+            $table->integer('page_id');
             $table->string('title')->nullable();
         });
     }
