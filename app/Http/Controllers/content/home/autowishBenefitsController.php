@@ -15,17 +15,7 @@ class autowishBenefitsController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return autowishBenefits::all();
     }
 
     /**
@@ -36,60 +26,63 @@ class autowishBenefitsController extends Controller
      */
     public function store(Request $request)
     {
-        $autowishBenefits = new autowishBenefits;
-        $autowishBenefits->page_id = $request->page_id;
-        $autowishBenefits->bold = $request->bold;
-        $autowishBenefits->text = $request->text;
+        $autowishBenefit = new autowishBenefits;
+        $autowishBenefit = autowishBenefits::create($request->all());
 
-        $autowishBenefits->save(); 
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $autowishBenefit->getTable(),
+            'Model' => $autowishBenefit,
+        ]);     
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefits
+     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefit
      * @return \Illuminate\Http\Response
      */
-    public function show(autowishBenefits $autowishBenefits)
+    public function show(autowishBenefits $autowishBenefit)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefits
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(autowishBenefits $autowishBenefits)
-    {
-        //
+        return $autowishBenefit;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefits
+     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, autowishBenefits $autowishBenefits)
-    {
-        $autowishBenefits->page_id = $request->page_id;
-        $autowishBenefits->bold = $request->bold;
-        $autowishBenefits->text = $request->text;
+    public function update(Request $request, autowishBenefits $autowishBenefit)
+    {        
+        $$autowishBenefit->fill($request->all());
+        $$autowishBenefit->save();
 
-        $autowishBenefits->save(); 
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $$autowishBenefit->getTable(),
+            'Model' => $$autowishBenefit,
+        ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefits
+     * @param  \App\Models\content\home\autowishBenefits  $autowishBenefit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(autowishBenefits $autowishBenefits)
+    public function destroy(autowishBenefits $autowishBenefit)
     {
-        $autowishBenefits->delete();
+        $autowishBenefit->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $$autowishBenefit->getTable(),
+            'Model' => $$autowishBenefit,
+        ]);           
     }
 }

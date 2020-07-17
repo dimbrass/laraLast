@@ -19,16 +19,6 @@ class autowishAboutController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,24 +49,13 @@ class autowishAboutController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(autowishAbout $autowishAbout)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\content\home\autowishAbout  $autowishAbout
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, autowishAbout $autowishAbout)
+    public function update($id, Request $request, autowishAbout $autowishAbout)
     {
         $autowishAbout->page_id = $request->page_id;
         $autowishAbout->title = $request->title;
