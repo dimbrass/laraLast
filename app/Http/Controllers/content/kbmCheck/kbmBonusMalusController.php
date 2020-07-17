@@ -15,17 +15,7 @@ class kbmBonusMalusController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return kbmBonusMalus::all();   
     }
 
     /**
@@ -42,18 +32,14 @@ class kbmBonusMalusController extends Controller
         ]);
         
         $kbmBonusMalus = new kbmBonusMalus;
-        $kbmBonusMalus->page_id = $request->page_id;
-        $kbmBonusMalus->title = $request->title;
-        $kbmBonusMalus->top = $request->top;
-        $kbmBonusMalus->paragraph1 = $request->paragraph1;
-        $kbmBonusMalus->paragraph2 = $request->paragraph2;
-        $kbmBonusMalus->paragraph3 = $request->paragraph3;
-        $kbmBonusMalus->bold_paragraph1 = $request->bold_paragraph1;
-        $kbmBonusMalus->bold_paragraph2 = $request->bold_paragraph2;
+        $kbmBonusMalus = kbmBonusMalus::create($request->all());
 
-        $kbmBonusMalus->save(); 
-
-        return response('Successfully stored!', 200);
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $kbmBonusMalus->getTable(),
+            'Model' => $kbmBonusMalus,
+        ]);           
     }
 
     /**
@@ -62,20 +48,9 @@ class kbmBonusMalusController extends Controller
      * @param  \App\Models\content\kbmCheck\kbmBonusMalus  $kbmBonusMalus
      * @return \Illuminate\Http\Response
      */
-    public function show(kbmBonusMalus $kbmBonusMalus)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\kbmCheck\kbmBonusMalus  $kbmBonusMalus
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(kbmBonusMalus $kbmBonusMalus)
-    {
-        //
+    public function show($id)
+    {   
+        return kbmBonusMalus::findOrFail($id);
     }
 
     /**
@@ -86,12 +61,13 @@ class kbmBonusMalusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request, kbmBonusMalus $kbmBonusMalus)
-    {         
+    {         dd($this->route('slug'));
         $table = $kbmBonusMalus->getTable();
+
         // если в инъекции прилетел пустой объект то он есть но не имеет id
         if (!$kbmBonusMalus->id) 
         {
-            $kbmBonusMalus = kbmBonusMalus::find($id);             
+            $kbmBonusMalus = kbmBonusMalus::findOrFail($id);             
         } 
         // если объект в базе найден
         if ($kbmBonusMalus)
@@ -101,16 +77,8 @@ class kbmBonusMalusController extends Controller
                 'page_id' => 'required|numeric',
             ]); 
             
-            $kbmBonusMalus->page_id = $request->page_id;
-            $kbmBonusMalus->title = $request->title;
-            $kbmBonusMalus->top = $request->top; 
-            $kbmBonusMalus->paragraph1 = $request->paragraph1;
-            $kbmBonusMalus->paragraph2 = $request->paragraph2;
-            $kbmBonusMalus->paragraph3 = $request->paragraph3;
-            $kbmBonusMalus->bold_paragraph1 = $request->bold_paragraph1;
-            $kbmBonusMalus->bold_paragraph2 = $request->bold_paragraph2;
-            
-            $kbmBonusMalus->save(); 
+            $kbmBonusMalus->fill($request->all());
+            $kbmBonusMalus->save();
         }
         else {
              return response()->json([
@@ -120,7 +88,12 @@ class kbmBonusMalusController extends Controller
             ]);           
         }
 
-        return response('Successfully updated!', 200);
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $table,
+            'Model' => $kbmBonusMalus,
+        ]);           
     }
 
     /**
@@ -150,6 +123,11 @@ class kbmBonusMalusController extends Controller
             ]);            
         }
 
-        return response('Successfully deleted!', 200);
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $table,
+            'Model' => $kbmBonusMalus,
+        ]);           
     }
 }
