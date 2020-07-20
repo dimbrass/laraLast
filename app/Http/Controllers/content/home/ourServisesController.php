@@ -15,17 +15,7 @@ class ourServisesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return ourServises::all();  
     }
 
     /**
@@ -36,56 +26,73 @@ class ourServisesController extends Controller
      */
     public function store(Request $request)
     {
-        $ourServises = new ourServises;
-        $ourServises->page_id = $request->page_id;
-        $ourServises->title = $request->title;
-        $ourServises->save(); 
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
+        $ourServise = new ourServises;
+        $ourServise = ourServises::create($request->all());
+
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $ourServise->getTable(),
+            'Model' => $ourServise,
+        ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\home\ourServises  $ourServises
+     * @param  \App\Models\content\home\ourServises  $ourServise
      * @return \Illuminate\Http\Response
      */
-    public function show(ourServises $ourServises)
+    public function show(ourServises $ourServise)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\ourServises  $ourServises
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ourServises $ourServises)
-    {
-        //
+        return $ourServise;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\home\ourServises  $ourServises
+     * @param  \App\Models\content\home\ourServises  $ourServise
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ourServises $ourServises)
+    public function update(Request $request, ourServises $ourServise)
     {
-        $ourServises->page_id = $request->page_id;
-        $ourServises->title = $request->title;
-        $ourServises->save();
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $ourServise->fill($request->all());
+        $ourServise->save();
+
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $ourServise->getTable(),
+            'Model' => $ourServise,
+        ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\home\ourServises  $ourServises
+     * @param  \App\Models\content\home\ourServises  $ourServise
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ourServises $ourServises)
+    public function destroy(ourServises $ourServise)
     {
-        $ourServises->delete();
+        $ourServise->delete(); 
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $ourServise->getTable(),
+            'Model' => $ourServise,
+        ]);         
     }
 }

@@ -15,20 +15,8 @@ class ourServisesTitleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $ourServisesTitle = ourServisesTitle::all();  
-        
-        //return view('content\home\blocks\our-servises-title\index', ['ourServisesTitle' => $ourServisesTitle]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    {    
+        return ourServisesTitle::all();
     }
 
     /**
@@ -39,10 +27,20 @@ class ourServisesTitleController extends Controller
      */
     public function store(Request $request)
     {
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
         $ourServisesTitle = new ourServisesTitle;
-        $ourServisesTitle->page_id = $request->page_id;
-        $ourServisesTitle->title = $request->title;
-        $ourServisesTitle->save(); 
+        $ourServisesTitle = ourServisesTitle::create($request->all());
+
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $ourServisesTitle->getTable(),
+            'Model' => $ourServisesTitle,
+        ]);           
     }
 
     /**
@@ -53,18 +51,7 @@ class ourServisesTitleController extends Controller
      */
     public function show(ourServisesTitle $ourServisesTitle)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\ourServisesTitle  $ourServisesTitle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ourServisesTitle $ourServisesTitle)
-    {
-        //
+        return $ourServisesTitle;
     }
 
     /**
@@ -76,9 +63,20 @@ class ourServisesTitleController extends Controller
      */
     public function update(Request $request, ourServisesTitle $ourServisesTitle)
     {
-        $ourServisesTitle->page_id = $request->page_id;
-        $ourServisesTitle->title = $request->title;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $ourServisesTitle->fill($request->all());
         $ourServisesTitle->save();
+
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $ourServisesTitle->getTable(),
+            'Model' => $ourServisesTitle,
+        ]);          
     }
 
     /**
@@ -90,5 +88,12 @@ class ourServisesTitleController extends Controller
     public function destroy(ourServisesTitle $ourServisesTitle)
     {
         $ourServisesTitle->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $ourServisesTitle->getTable(),
+            'Model' => $ourServisesTitle,
+        ]);           
     }
 }

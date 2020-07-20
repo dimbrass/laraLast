@@ -8,6 +8,9 @@ class Page extends Model
 {
     // Связанная с моделью таблица
     protected $table = 'co_all-pages__kbm-check';
+
+    // make all attributes mass assignable, except 'id'
+    protected $guarded = ['id'];
   
     public $timestamps = false;
   

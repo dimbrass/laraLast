@@ -21,17 +21,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Page::all();  
     }
 
     /**
@@ -42,10 +32,20 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'name' => 'required',
+        ]);
+        
         $page = new Page;
-        $page->name = $request->name;
-        $page->title = $request->title;
-        $page->save();
+        $page = Page::create($request->all());
+
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 
     /**
@@ -56,18 +56,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\kbmCheck\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Page $page)
-    {
-        //
+        return $page;
     }
 
     /**
@@ -79,9 +68,20 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        $page->name = $request->name;
-        $page->title = $request->title;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'name' => 'required',
+        ]); 
+        
+        $page->fill($request->all());
         $page->save();
+
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 
     /**
@@ -93,5 +93,12 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         $page->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 }

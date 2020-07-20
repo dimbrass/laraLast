@@ -15,17 +15,7 @@ class autowishServisesTitleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return autowishServisesTitle::all();   
     }
 
     /**
@@ -36,11 +26,20 @@ class autowishServisesTitleController extends Controller
      */
     public function store(Request $request)
     {
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
         $autowishServisesTitle = new autowishServisesTitle;
-        $autowishServisesTitle->page_id = $request->page_id;
-        $autowishServisesTitle->title = $request->title;
+        $autowishServisesTitle = autowishServisesTitle::create($request->all());
 
-        $autowishServisesTitle->save(); 
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $autowishServisesTitle->getTable(),
+            'Model' => $autowishServisesTitle,
+        ]);           
     }
 
     /**
@@ -51,18 +50,7 @@ class autowishServisesTitleController extends Controller
      */
     public function show(autowishServisesTitle $autowishServisesTitle)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\autowishServisesTitle  $autowishServisesTitle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(autowishServisesTitle $autowishServisesTitle)
-    {
-        //
+        return $autowishServisesTitle;
     }
 
     /**
@@ -74,10 +62,20 @@ class autowishServisesTitleController extends Controller
      */
     public function update(Request $request, autowishServisesTitle $autowishServisesTitle)
     {
-        $autowishServisesTitle->page_id = $request->page_id;
-        $autowishServisesTitle->title = $request->title;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $autowishServisesTitle->fill($request->all());
+        $autowishServisesTitle->save();
 
-        $autowishServisesTitle->save(); 
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $autowishServisesTitle->getTable(),
+            'Model' => $autowishServisesTitle,
+        ]);           
     }
 
     /**
@@ -89,5 +87,12 @@ class autowishServisesTitleController extends Controller
     public function destroy(autowishServisesTitle $autowishServisesTitle)
     {
         $autowishServisesTitle->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $autowishServisesTitle->getTable(),
+            'Model' => $autowishServisesTitle,
+        ]);           
     }
 }

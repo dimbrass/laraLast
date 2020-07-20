@@ -15,17 +15,7 @@ class autowishServisesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return autowishServises::all();   
     }
 
     /**
@@ -36,60 +26,73 @@ class autowishServisesController extends Controller
      */
     public function store(Request $request)
     {
-        $autowishServises = new autowishServises;
-        $autowishServises->page_id = $request->page_id;
-        $autowishServises->title = $request->title;
-        $autowishServises->link = $request->link;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
+        $autowishServise = new autowishServises;
+        $autowishServise = autowishServises::create($request->all());
 
-        $autowishServises->save(); 
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $autowishServise->getTable(),
+            'Model' => $autowishServise,
+        ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\home\autowishServises  $autowishServises
+     * @param  \App\Models\content\home\autowishServises  $autowishServise
      * @return \Illuminate\Http\Response
      */
-    public function show(autowishServises $autowishServises)
+    public function show(autowishServises $autowishServise)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\autowishServises  $autowishServises
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(autowishServises $autowishServises)
-    {
-        //
+        return $autowishServise;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\home\autowishServises  $autowishServises
+     * @param  \App\Models\content\home\autowishServises  $autowishServise
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, autowishServises $autowishServises)
+    public function update(Request $request, autowishServises $autowishServise)
     {
-        $autowishServises->page_id = $request->page_id;
-        $autowishServises->title = $request->title;
-        $autowishServises->link = $request->link;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $autowishServise->fill($request->all());
+        $autowishServise->save();
 
-        $autowishServises->save(); 
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $autowishServise->getTable(),
+            'Model' => $autowishServise,
+        ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\home\autowishServises  $autowishServises
+     * @param  \App\Models\content\home\autowishServises  $autowishServise
      * @return \Illuminate\Http\Response
      */
-    public function destroy(autowishServises $autowishServises)
+    public function destroy(autowishServises $autowishServise)
     {
-        $autowishServises->delete();
+        $autowishServise->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $autowishServise->getTable(),
+            'Model' => $autowishServise,
+        ]);         
     }
 }

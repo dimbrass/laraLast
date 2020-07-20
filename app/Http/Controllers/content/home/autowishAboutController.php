@@ -15,7 +15,7 @@ class autowishAboutController extends Controller
      */
     public function index()
     {
-        //
+        return autowishAbout::all();   
     }
 
     /**
@@ -26,15 +26,20 @@ class autowishAboutController extends Controller
      */
     public function store(Request $request)
     {
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
         $autowishAbout = new autowishAbout;
-        $autowishAbout->page_id = $request->page_id;
-        $autowishAbout->title = $request->title;
-        $autowishAbout->paragraph1 = $request->paragraph1;
-        $autowishAbout->paragraph2 = $request->paragraph2;
+        $autowishAbout = autowishAbout::create($request->all());
 
-        $autowishAbout->save(); 
-
-        return response('Successfully stored!', 200);
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $autowishAbout->getTable(),
+            'Model' => $autowishAbout,
+        ]);           
     }
 
     /**
@@ -45,7 +50,7 @@ class autowishAboutController extends Controller
      */
     public function show(autowishAbout $autowishAbout)
     {
-        //
+        return $autowishAbout;
     }
 
     /**
@@ -55,16 +60,22 @@ class autowishAboutController extends Controller
      * @param  \App\Models\content\home\autowishAbout  $autowishAbout
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request, autowishAbout $autowishAbout)
+    public function update(Request $request, autowishAbout $autowishAbout)
     {
-        $autowishAbout->page_id = $request->page_id;
-        $autowishAbout->title = $request->title;
-        $autowishAbout->paragraph1 = $request->paragraph1;
-        $autowishAbout->paragraph2 = $request->paragraph2;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $autowishAbout->fill($request->all());
+        $autowishAbout->save();
 
-        $autowishAbout->save(); 
-
-        return response('Successfully updated!', 200);
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $autowishAbout->getTable(),
+            'Model' => $autowishAbout,
+        ]);           
     }
 
     /**
@@ -77,6 +88,11 @@ class autowishAboutController extends Controller
     {
         $autowishAbout->delete();
 
-        return response('Successfully deleted!', 200);
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $autowishAbout->getTable(),
+            'Model' => $autowishAbout,
+        ]);           
     }
 }

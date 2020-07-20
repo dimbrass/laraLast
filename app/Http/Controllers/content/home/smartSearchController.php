@@ -15,17 +15,7 @@ class smartSearchController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return smartSearch::all();   
     }
 
     /**
@@ -36,12 +26,20 @@ class smartSearchController extends Controller
      */
     public function store(Request $request)
     {
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
         $smartSearch = new smartSearch;
-        $smartSearch->page_id = $request->page_id;
-        $smartSearch->title = $request->title;
-        $smartSearch->examples = $request->examples;
+        $smartSearch = smartSearch::create($request->all());
 
-        $smartSearch->save(); 
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $smartSearch->getTable(),
+            'Model' => $smartSearch,
+        ]);           
     }
 
     /**
@@ -52,18 +50,7 @@ class smartSearchController extends Controller
      */
     public function show(smartSearch $smartSearch)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\smartSearch  $smartSearch
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(smartSearch $smartSearch)
-    {
-        //
+        return $smartSearch;
     }
 
     /**
@@ -75,11 +62,20 @@ class smartSearchController extends Controller
      */
     public function update(Request $request, smartSearch $smartSearch)
     {
-        $smartSearch->page_id = $request->page_id;
-        $smartSearch->title = $request->title;
-        $smartSearch->examples = $request->examples;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $smartSearch->fill($request->all());
+        $smartSearch->save();
 
-        $smartSearch->save(); 
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $smartSearch->getTable(),
+            'Model' => $smartSearch,
+        ]);           
     }
 
     /**
@@ -91,5 +87,12 @@ class smartSearchController extends Controller
     public function destroy(smartSearch $smartSearch)
     {
         $smartSearch->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $smartSearch->getTable(),
+            'Model' => $smartSearch,
+        ]);           
     }
 }

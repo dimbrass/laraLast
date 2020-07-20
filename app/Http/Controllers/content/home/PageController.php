@@ -24,28 +24,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $page = Page::all()->first();
-        $pageBlocks [] = ['block' => $page->insurance, 'name' => 'insurance'];
-        $pageBlocks [] = ['block' => $page->ourServisesTitle, 'name' => 'our-servises-title'];
-        $pageBlocks [] = ['block' => $page->ourServises, 'name' => 'our-servises'];
-        $pageBlocks [] = ['block' => $page->autowishAbout, 'name' => 'autowish-about'];
-        $pageBlocks [] = ['block' => $page->autowishBenefits, 'name' => 'autowish-benefits'];
-        $pageBlocks [] = ['block' => $page->autowishServisesTitle, 'name' => 'autowish-servises-title'];
-        $pageBlocks [] = ['block' => $page->autowishServises, 'name' => 'autowish-servises'];
-        $pageBlocks [] = ['block' => $page->smartSearch, 'name' => 'smart-search'];
-        $pageBlocks [] = ['block' => $page->socMedia, 'name' => 'soc-media'];      
-        
-        return view('content\home\index', ['page' => $page, 'pageBlocks' => $pageBlocks]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('content\home\create');
+        return Page::all();  
     }
 
     /**
@@ -56,12 +35,20 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        $page = new Page;
-        $page->name = $request->name;
-        $page->title = $request->title;
-        $page->save();
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'name' => 'required',
+        ]);
         
-        return redirect()->route('page.index');
+        $page = new Page;
+        $page = Page::create($request->all());
+
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 
     /**
@@ -72,18 +59,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        return view('content\home\show', ['page' => $page]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Page $page)
-    {
-        return view('content\home\edit', ['page' => $page]);
+        return $page;
     }
 
     /**
@@ -95,11 +71,20 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        $page->name = $request->name;
-        $page->title = $request->title;
-        $page->save();
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'name' => 'required',
+        ]); 
         
-        return redirect()->route('page.index');
+        $page->fill($request->all());
+        $page->save();
+
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 
     /**
@@ -111,7 +96,12 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         $page->delete();
-        
-        return redirect()->route('page.index');
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 }

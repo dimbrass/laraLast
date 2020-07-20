@@ -57,14 +57,14 @@ class autowishBenefitsController extends Controller
      */
     public function update(Request $request, autowishBenefits $autowishBenefit)
     {        
-        $$autowishBenefit->fill($request->all());
-        $$autowishBenefit->save();
+        $autowishBenefit->fill($request->all());
+        $autowishBenefit->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $$autowishBenefit->getTable(),
-            'Model' => $$autowishBenefit,
+            'Table' => $autowishBenefit->getTable(),
+            'Model' => $autowishBenefit,
         ]);           
     }
 
@@ -81,8 +81,8 @@ class autowishBenefitsController extends Controller
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $$autowishBenefit->getTable(),
-            'Model' => $$autowishBenefit,
+            'Table' => $autowishBenefit->getTable(),
+            'Model' => $autowishBenefit,
         ]);           
     }
 }

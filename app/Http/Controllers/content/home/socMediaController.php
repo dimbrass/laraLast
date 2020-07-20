@@ -15,17 +15,7 @@ class socMediaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return socMedia::all(); 
     }
 
     /**
@@ -36,58 +26,73 @@ class socMediaController extends Controller
      */
     public function store(Request $request)
     {
-        $socMedia = new socMedia;
-        $socMedia->page_id = $request->page_id;
-        $socMedia->title = $request->title;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
+        $socMedium = new socMedia;
+        $socMedium = socMedia::create($request->all());
 
-        $socMedia->save(); 
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $socMedium->getTable(),
+            'Model' => $socMedium,
+        ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\home\socMedia  $socMedia
+     * @param  \App\Models\content\home\socMedia  $socMedium
      * @return \Illuminate\Http\Response
      */
-    public function show(socMedia $socMedia)
+    public function show(socMedia $socMedium)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\home\socMedia  $socMedia
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(socMedia $socMedia)
-    {
-        //
+        return $socMedium;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\home\socMedia  $socMedia
+     * @param  \App\Models\content\home\socMedia  $socMedium
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, socMedia $socMedia)
+    public function update(Request $request, socMedia $socMedium)
     {
-        $socMedia->page_id = $request->page_id;
-        $socMedia->title = $request->title;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
+        
+        $socMedium->fill($request->all());
+        $socMedium->save();
 
-        $socMedia->save(); 
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $socMedium->getTable(),
+            'Model' => $socMedium,
+        ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\home\socMedia  $socMedia
+     * @param  \App\Models\content\home\socMedia  $socMedium
      * @return \Illuminate\Http\Response
      */
-    public function destroy(socMedia $socMedia)
+    public function destroy(socMedia $socMedium)
     {
-        $socMedia->delete();
+        $socMedium->delete();
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $socMedium->getTable(),
+            'Model' => $socMedium,
+        ]);           
     }
 }

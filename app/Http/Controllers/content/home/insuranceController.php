@@ -39,12 +39,20 @@ class insuranceController extends Controller
      */
     public function store(Request $request)
     {
-        $insurance = new Insurance;
-        $insurance->page_id = $request->page_id;
-        $insurance->link = $request->link;
-        $insurance->save();
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]);
+        
+        $insurance = new insurance;
+        $insurance = insurance::create($request->all());
 
-        return redirect()->route('insurance.index');
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $insurance->getTable(),
+            'Model' => $insurance,
+        ]);           
     }
 
     /**
@@ -78,11 +86,20 @@ class insuranceController extends Controller
      */
     public function update(Request $request, insurance $insurance)
     {
-        $insurance->page_id = $request->page_id;
-        $insurance->link = $request->link;
-        $insurance->save();
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'page_id' => 'required|numeric',
+        ]); 
         
-        return redirect()->route('insurance.index');
+        $insurance->fill($request->all());
+        $insurance->save();
+
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $insurance->getTable(),
+            'Model' => $insurance,
+        ]);           
     }
 
     /**
@@ -94,7 +111,12 @@ class insuranceController extends Controller
     public function destroy(insurance $insurance)
     {
         $insurance->delete();
-        
-        return redirect()->route('insurance.index');
+
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $insurance->getTable(),
+            'Model' => $insurance,
+        ]);           
     }
 }

@@ -20,17 +20,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Page::all();  
     }
 
     /**
@@ -43,13 +33,18 @@ class PageController extends Controller
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required|max:255',
+            'name' => 'required',
         ]);
         
         $page = new Page;
-        $page->name = $request->name;
-        $page->title = $request->title;
-        $page->save();
+        $page = Page::create($request->all());
+
+        return response()->json([
+            'Success' => 'stored!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 
     /**
@@ -60,18 +55,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\content\kbmCheck\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Page $page)
-    {
-        //
+        return $page;
     }
 
     /**
@@ -81,36 +65,22 @@ class PageController extends Controller
      * @param  \App\Models\content\kbmCheck\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page, $id)
+    public function update(Request $request, Page $page)
     {   
-        $table = $page->getTable();
-        // если в инъекции прилетел пустой объект то он есть но не имеет id
-        if (!$page->id) 
-        {
-            $page = Page::find($id);             
-        } 
-        // если объект в базе найден
-        if ($page)
-        {     
-            // validate
-            $validatedData = $request->validateWithBag('content', [
-                'name' => 'required|max:255',
-            ]);
-            
-            $page->name = $request->name;
-            $page->title = $request->title;
+        // validate
+        $validatedData = $request->validateWithBag('content', [
+            'name' => 'required',
+        ]); 
+        
+        $page->fill($request->all());
+        $page->save();
 
-            $page->save();            
-        }
-        else {
-             return response()->json([
-                'error' => 'Object does not exist in database',
-                'table' => $table,
-                'id' => $id,
-            ]);           
-        }
-
-        return response('Successfully updated!', 200);
+        return response()->json([
+            'Success' => 'updated!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);           
     }
 
     /**
@@ -123,26 +93,11 @@ class PageController extends Controller
     {
         $page->delete();
 
-        
-        $table = $page->getTable();
-        // если в инъекции прилетел пустой объект то он есть но не имеет id
-        if (!$page->id) 
-        {
-            $page = Page::find($id); 
-        } 
-        // если объект в базе найден
-        if ($page) 
-        {  
-            $page->delete();        
-        }
-        else {
-            return response()->json([
-                'error' => 'Object does not exist in database',
-                'table' => $table,
-                'id' => $id,
-            ]);            
-        }
-
-        return response('Successfully deleted!', 200);
+        return response()->json([
+            'Success' => 'deleted!',
+            'Staus' => '200',
+            'Table' => $page->getTable(),
+            'Model' => $page,
+        ]);          
     }
 }
