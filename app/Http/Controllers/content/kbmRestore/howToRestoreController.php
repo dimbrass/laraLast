@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\content\home;
+namespace App\Http\Controllers\content\kbmRestore;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\home\autowishAbout;
+use App\Models\content\kbmRestore\howToRestore;
 use Illuminate\Http\Request;
 
-class autowishAboutController extends Controller
+class howToRestoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class autowishAboutController extends Controller
      */
     public function index()
     {
-        return autowishAbout::all();   
+        return howToRestore::all();   
     }
 
     /**
@@ -31,68 +31,68 @@ class autowishAboutController extends Controller
             'page_id' => 'required|numeric',
         ]);
         
-        $autowishAbout = new autowishAbout;
-        $autowishAbout = autowishAbout::create($request->all());
+        $howToRestore = new howToRestore;
+        $howToRestore = howToRestore::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $autowishAbout->getTable(),
-            'Model' => $autowishAbout,
+            'Table' => $howToRestore->getTable(),
+            'Model' => $howToRestore,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
+     * @param  \App\Models\content\kbmRestore\howToRestore  $howToRestore
      * @return \Illuminate\Http\Response
      */
-    public function show(autowishAbout $autowishAbout)
+    public function show(howToRestore $howToRestore)
     {
-        return $autowishAbout;
+        return $howToRestore;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
+     * @param  \App\Models\content\kbmRestore\howToRestore  $howToRestore
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, autowishAbout $autowishAbout)
+    public function update(Request $request, howToRestore $howToRestore)
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
             'page_id' => 'required|numeric',
         ]); 
         
-        $autowishAbout->fill($request->all());
-        $autowishAbout->save();
+        $howToRestore->fill($request->all());
+        $howToRestore->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $autowishAbout->getTable(),
-            'Model' => $autowishAbout,
+            'Table' => $howToRestore->getTable(),
+            'Model' => $howToRestore,
         ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
+     * @param  \App\Models\content\kbmRestore\howToRestore  $howToRestore
      * @return \Illuminate\Http\Response
      */
-    public function destroy(autowishAbout $autowishAbout)
+    public function destroy(howToRestore $howToRestore)
     {
-        $autowishAbout->delete(); 
+        $howToRestore->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $autowishAbout->getTable(),
-            'Model' => $autowishAbout,
-        ]);      
+            'Table' => $howToRestore->getTable(),
+            'Model' => $howToRestore,
+        ]);       
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\content\home;
+namespace App\Http\Controllers\content\kbmCheck;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\home\autowishAbout;
+use App\Models\content\kbmCheck\whattodoItem1;
 use Illuminate\Http\Request;
 
-class autowishAboutController extends Controller
+class whattodoItem1Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class autowishAboutController extends Controller
      */
     public function index()
     {
-        return autowishAbout::all();   
+        return whattodoItem1::all();   
     }
 
     /**
@@ -31,68 +31,68 @@ class autowishAboutController extends Controller
             'page_id' => 'required|numeric',
         ]);
         
-        $autowishAbout = new autowishAbout;
-        $autowishAbout = autowishAbout::create($request->all());
+        $whattodoItem_1 = new whattodoItem1;
+        $whattodoItem_1 = whattodoItem1::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $autowishAbout->getTable(),
-            'Model' => $autowishAbout,
+            'Table' => $whattodoItem_1->getTable(),
+            'Model' => $whattodoItem_1,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
+     * @param  \App\Models\content\kbmCheck\whattodoItem1  $whattodoItem_1
      * @return \Illuminate\Http\Response
      */
-    public function show(autowishAbout $autowishAbout)
+    public function show(whattodoItem1 $whattodoItem_1)
     {
-        return $autowishAbout;
+        return $whattodoItem_1;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
+     * @param  \App\Models\content\kbmCheck\whattodoItem1  $whattodoItem_1
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, autowishAbout $autowishAbout)
+    public function update(Request $request, whattodoItem1 $whattodoItem_1)
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
             'page_id' => 'required|numeric',
         ]); 
         
-        $autowishAbout->fill($request->all());
-        $autowishAbout->save();
+        $whattodoItem_1->fill($request->all());
+        $whattodoItem_1->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $autowishAbout->getTable(),
-            'Model' => $autowishAbout,
-        ]);           
+            'Table' => $whattodoItem_1->getTable(),
+            'Model' => $whattodoItem_1,
+        ]);        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\home\autowishAbout  $autowishAbout
+     * @param  \App\Models\content\kbmCheck\whattodoItem1  $whattodoItem_1
      * @return \Illuminate\Http\Response
      */
-    public function destroy(autowishAbout $autowishAbout)
+    public function destroy(whattodoItem1 $whattodoItem_1)
     {
-        $autowishAbout->delete(); 
+        $whattodoItem_1->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $autowishAbout->getTable(),
-            'Model' => $autowishAbout,
-        ]);      
+            'Table' => $whattodoItem_1->getTable(),
+            'Model' => $whattodoItem_1,
+        ]);       
     }
 }
