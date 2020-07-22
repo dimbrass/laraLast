@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\content\kbmCheck;
+namespace App\Http\Controllers\content\mulctCheck;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\kbmCheck\Page;
+use App\Models\content\mulctCheck\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -45,7 +45,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function show(Page $page)
@@ -57,7 +57,7 @@ class PageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Page $page)
@@ -81,7 +81,7 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function destroy(Page $page)

@@ -26,6 +26,6 @@ class CreateCoCommonTopslider extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content_blocks__topslider');
+        Schema::dropIfExists('co_blocks__topslider');
     }
 }

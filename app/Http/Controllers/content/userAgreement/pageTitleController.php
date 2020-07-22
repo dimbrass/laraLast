@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\content\kbmCheck;
+namespace App\Http\Controllers\content\userAgreement;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\kbmCheck\whattodoItem2;
+use App\Models\content\userAgreement\pageTitle;
 use Illuminate\Http\Request;
 
-class whattodoItem2Controller extends Controller
+class pageTitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class whattodoItem2Controller extends Controller
      */
     public function index()
     {
-        return whattodoItem2::all();   
+        return pageTitle::all();   
     }
 
     /**
@@ -31,68 +31,68 @@ class whattodoItem2Controller extends Controller
             'page_id' => 'required|numeric',
         ]);
         
-        $whattodoItem_2 = new whattodoItem2;
-        $whattodoItem_2 = whattodoItem2::create($request->all());
+        $pageTitle = new pageTitle;
+        $pageTitle = pageTitle::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $whattodoItem_2->getTable(),
-            'Model' => $whattodoItem_2,
+            'Table' => $pageTitle->getTable(),
+            'Model' => $pageTitle,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\kbmCheck\whattodoItem2  $whattodoItem_2
+     * @param  \App\Models\content\mulctCheck\pageTitle  $pageTitle
      * @return \Illuminate\Http\Response
      */
-    public function show(whattodoItem2 $whattodoItem_2)
+    public function show(pageTitle $pageTitle)
     {
-        return $whattodoItem_2;
+        return $pageTitle;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\kbmCheck\whattodoItem2  $whattodoItem_2
+     * @param  \App\Models\content\mulctCheck\pageTitle  $pageTitle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, whattodoItem2 $whattodoItem_2)
+    public function update(Request $request, pageTitle $pageTitle)
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
             'page_id' => 'required|numeric',
         ]); 
         
-        $whattodoItem_2->fill($request->all());
-        $whattodoItem_2->save();
+        $pageTitle->fill($request->all());
+        $pageTitle->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $whattodoItem_2->getTable(),
-            'Model' => $whattodoItem_2,
-        ]);        
+            'Table' => $pageTitle->getTable(),
+            'Model' => $pageTitle,
+        ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\kbmCheck\whattodoItem2  $whattodoItem_2
+     * @param  \App\Models\content\mulctCheck\pageTitle  $pageTitle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(whattodoItem2 $whattodoItem_2)
+    public function destroy(pageTitle $pageTitle)
     {
-        $whattodoItem_2->delete(); 
+        $pageTitle->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $whattodoItem_2->getTable(),
-            'Model' => $whattodoItem_2,
+            'Table' => $pageTitle->getTable(),
+            'Model' => $pageTitle,
         ]);       
     }
 }

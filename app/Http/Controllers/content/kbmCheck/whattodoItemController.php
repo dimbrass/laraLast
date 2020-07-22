@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\content\kbmCheck;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\kbmCheck\whattodoItem3;
+use App\Models\content\kbmCheck\whattodoItem;
 use Illuminate\Http\Request;
 
-class whattodoItem3Controller extends Controller
+class whattodoItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class whattodoItem3Controller extends Controller
      */
     public function index()
     {
-        return whattodoItem3::all();   
+        return whattodoItem::all();   
     }
 
     /**
@@ -31,68 +31,68 @@ class whattodoItem3Controller extends Controller
             'page_id' => 'required|numeric',
         ]);
         
-        $whattodoItem_3 = new whattodoItem3;
-        $whattodoItem_3 = whattodoItem3::create($request->all());
+        $whattodoItem = new whattodoItem;
+        $whattodoItem = whattodoItem::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $whattodoItem_3->getTable(),
-            'Model' => $whattodoItem_3,
+            'Table' => $whattodoItem->getTable(),
+            'Model' => $whattodoItem,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\kbmCheck\whattodoItem3  $whattodoItem_3
+     * @param  \App\Models\content\kbmCheck\whattodoItem  $whattodoItem
      * @return \Illuminate\Http\Response
      */
-    public function show(whattodoItem3 $whattodoItem_3)
+    public function show(whattodoItem $whattodoItem)
     {
-        return $whattodoItem_3;
+        return $whattodoItem;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\kbmCheck\whattodoItem3  $whattodoItem_3
+     * @param  \App\Models\content\kbmCheck\whattodoItem  $whattodoItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, whattodoItem3 $whattodoItem_3)
+    public function update(Request $request, whattodoItem $whattodoItem)
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
             'page_id' => 'required|numeric',
         ]); 
         
-        $whattodoItem_3->fill($request->all());
-        $whattodoItem_3->save();
+        $whattodoItem->fill($request->all());
+        $whattodoItem->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $whattodoItem_3->getTable(),
-            'Model' => $whattodoItem_3,
+            'Table' => $whattodoItem->getTable(),
+            'Model' => $whattodoItem,
         ]);        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\kbmCheck\whattodoItem3  $whattodoItem_3
+     * @param  \App\Models\content\kbmCheck\whattodoItem  $whattodoItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(whattodoItem3 $whattodoItem_3)
+    public function destroy(whattodoItem $whattodoItem)
     {
-        $whattodoItem_3->delete(); 
+        $whattodoItem->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $whattodoItem_3->getTable(),
-            'Model' => $whattodoItem_3,
+            'Table' => $whattodoItem->getTable(),
+            'Model' => $whattodoItem,
         ]);       
     }
 }

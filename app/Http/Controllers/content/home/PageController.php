@@ -4,15 +4,6 @@ namespace App\Http\Controllers\content\home;
 
 use App\Http\Controllers\Controller;
 use App\Models\content\home\Page;
-use App\Models\content\home\insurance;
-use App\Models\content\home\ourServisesTitle;
-use App\Models\content\home\ourServises;
-use App\Models\content\home\autowishAbout;
-use App\Models\content\home\autowishBenefits;
-use App\Models\content\home\autowishServisesTitle;
-use App\Models\content\home\autowishServises;
-use App\Models\content\home\smartSearch;
-use App\Models\content\home\socMedia;
 use Illuminate\Http\Request;
 
 class PageController extends Controller

@@ -27,22 +27,10 @@ class contentKbmCheckSeeder extends Seeder
             'title' => 'title'
             ],
         ]);
-        DB::table('co_kbm-check__whattodo-item-1')->insert([
+        DB::table('co_kbm-check__whattodo-item')->insert([
             [
             'title' => 'title1',
             'link' => 'link1'
-            ],
-        ]);
-        DB::table('co_kbm-check__whattodo-item-2')->insert([
-            [
-            'title' => 'title2',
-            'link' => 'link2'
-            ],
-        ]);
-        DB::table('co_kbm-check__whattodo-item-3')->insert([
-            [
-            'title' => 'title3',
-            'link' => 'link3'
             ],
         ]);
     }

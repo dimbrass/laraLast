@@ -37,9 +37,7 @@ Route::resources([
     'content/kbm-check/page' => 'content\kbmCheck\PageController',
     'content/kbm-check/kbm-bonus-malus' => 'content\kbmCheck\kbmBonusMalusController',
     'content/kbm-check/whattodo-title' => 'content\kbmCheck\whattodoTitleController',
-    'content/kbm-check/whattodo-item-1' => 'content\kbmCheck\whattodoItem1Controller',
-    'content/kbm-check/whattodo-item-2' => 'content\kbmCheck\whattodoItem2Controller',
-    'content/kbm-check/whattodo-item-3' => 'content\kbmCheck\whattodoItem3Controller',
+    'content/kbm-check/whattodo-item' => 'content\kbmCheck\whattodoItemController',
 ]);
 Route::resources([
     'content/kbm-restore/page' => 'content\kbmRestore\PageController',
@@ -49,4 +47,19 @@ Route::resources([
     'content/kbm-restore/restore-by-broker' => 'content\kbmRestore\restoreByBrokerController',
     'content/kbm-restore/restore-by-rsa' => 'content\kbmRestore\restoreByRsaController',
     'content/kbm-restore/restore-by-quick' => 'content\kbmRestore\restoreByQuickController',
+]);
+Route::resources([
+    'content/mulct-check/page' => 'content\mulctCheck\PageController',
+    'content/mulct-check/check-by-license' => 'content\mulctCheck\checkByLicenseController',
+    'content/mulct-check/deny-mulct' => 'content\mulctCheck\denyMulctController',
+    'content/mulct-check/mulct-gbdd' => 'content\mulctCheck\mulctGbddController',
+    'content/mulct-check/mulct-item' => 'content\mulctCheck\mulctItemController',
+    'content/mulct-check/mulcts-to-pay' => 'content\mulctCheck\mulctsToPayController',
+    'content/mulct-check/paid-mulct' => 'content\mulctCheck\paidMulctController',
+    'content/mulct-check/useful' => 'content\mulctCheck\usefulController',
+]);
+Route::resources([
+    'content/user-agreement/page' => 'content\userAgreement\PageController',
+    'content/user-agreement/page-title' => 'content\userAgreement\pageTitleController',
+    'content/user-agreement/text-block' => 'content\userAgreement\textBlockController',
 ]);

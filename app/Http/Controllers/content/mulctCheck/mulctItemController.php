@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\content\kbmCheck;
+namespace App\Http\Controllers\content\mulctCheck;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\kbmCheck\Page;
+use App\Models\content\mulctCheck\mulctItem;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class mulctItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return Page::all();  
+        return mulctItem::all();   
     }
 
     /**
@@ -28,71 +28,71 @@ class PageController extends Controller
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required',
+            'page_id' => 'required|numeric',
         ]);
         
-        $page = new Page;
-        $page = Page::create($request->all());
+        $mulctItem = new mulctItem;
+        $mulctItem = mulctItem::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
+            'Table' => $mulctItem->getTable(),
+            'Model' => $mulctItem,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\mulctItem  $mulctItem
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(mulctItem $mulctItem)
     {
-        return $page;
+        return $mulctItem;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\mulctItem  $mulctItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
-    {   
+    public function update(Request $request, mulctItem $mulctItem)
+    {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required',
+            'page_id' => 'required|numeric',
         ]); 
         
-        $page->fill($request->all());
-        $page->save();
+        $mulctItem->fill($request->all());
+        $mulctItem->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
+            'Table' => $mulctItem->getTable(),
+            'Model' => $mulctItem,
         ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\mulctItem  $mulctItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy(mulctItem $mulctItem)
     {
-        $page->delete();
+        $mulctItem->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
-        ]);          
+            'Table' => $mulctItem->getTable(),
+            'Model' => $mulctItem,
+        ]);       
     }
 }

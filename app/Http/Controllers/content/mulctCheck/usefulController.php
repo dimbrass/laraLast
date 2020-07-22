@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\content\kbmCheck;
+namespace App\Http\Controllers\content\mulctCheck;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\kbmCheck\Page;
+use App\Models\content\mulctCheck\useful;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class usefulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return Page::all();  
+        return useful::all();   
     }
 
     /**
@@ -28,71 +28,71 @@ class PageController extends Controller
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required',
+            'page_id' => 'required|numeric',
         ]);
         
-        $page = new Page;
-        $page = Page::create($request->all());
+        $useful = new useful;
+        $useful = useful::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
+            'Table' => $useful->getTable(),
+            'Model' => $useful,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\useful  $useful
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(useful $useful)
     {
-        return $page;
+        return $useful;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\useful  $useful
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
-    {   
+    public function update(Request $request, useful $useful)
+    {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required',
+            'page_id' => 'required|numeric',
         ]); 
         
-        $page->fill($request->all());
-        $page->save();
+        $useful->fill($request->all());
+        $useful->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
+            'Table' => $useful->getTable(),
+            'Model' => $useful,
         ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\useful  $useful
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy(useful $useful)
     {
-        $page->delete();
+        $useful->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
-        ]);          
+            'Table' => $useful->getTable(),
+            'Model' => $useful,
+        ]);       
     }
 }

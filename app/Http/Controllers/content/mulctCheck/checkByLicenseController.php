@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\content\kbmCheck;
+namespace App\Http\Controllers\content\mulctCheck;
 
 use App\Http\Controllers\Controller;
-use App\Models\content\kbmCheck\Page;
+use App\Models\content\mulctCheck\checkByLicense;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class checkByLicenseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return Page::all();  
+        return checkByLicense::all();   
     }
 
     /**
@@ -28,71 +28,71 @@ class PageController extends Controller
     {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required',
+            'page_id' => 'required|numeric',
         ]);
         
-        $page = new Page;
-        $page = Page::create($request->all());
+        $checkByLicense = new checkByLicense;
+        $checkByLicense = checkByLicense::create($request->all());
 
         return response()->json([
             'Success' => 'stored!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
+            'Table' => $checkByLicense->getTable(),
+            'Model' => $checkByLicense,
         ]);           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\checkByLicense  $checkByLicense
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(checkByLicense $checkByLicense)
     {
-        return $page;
+        return $checkByLicense;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\checkByLicense  $checkByLicense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
-    {   
+    public function update(Request $request, checkByLicense $checkByLicense)
+    {
         // validate
         $validatedData = $request->validateWithBag('content', [
-            'name' => 'required',
+            'page_id' => 'required|numeric',
         ]); 
         
-        $page->fill($request->all());
-        $page->save();
+        $checkByLicense->fill($request->all());
+        $checkByLicense->save();
 
         return response()->json([
             'Success' => 'updated!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
+            'Table' => $checkByLicense->getTable(),
+            'Model' => $checkByLicense,
         ]);           
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\content\kbmCheck\Page  $page
+     * @param  \App\Models\content\mulctCheck\checkByLicense  $checkByLicense
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy(checkByLicense $checkByLicense)
     {
-        $page->delete();
+        $checkByLicense->delete(); 
 
         return response()->json([
             'Success' => 'deleted!',
             'Staus' => '200',
-            'Table' => $page->getTable(),
-            'Model' => $page,
-        ]);          
+            'Table' => $checkByLicense->getTable(),
+            'Model' => $checkByLicense,
+        ]);       
     }
 }

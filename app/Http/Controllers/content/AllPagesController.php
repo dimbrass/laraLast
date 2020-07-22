@@ -15,7 +15,8 @@ class AllPagesController extends Controller
      */
     public function index()
     {
-        return view('content\all-pages');
+        $pages = AllPages::all();
+        return view('content\all-pages', $pages);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class contentBlocks_TopsliderSeeder extends Seeder
+class contentBlocksSeeder extends Seeder
 {
     /**
      * Run the database seeds.

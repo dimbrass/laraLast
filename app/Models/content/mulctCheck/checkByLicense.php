@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\content\kbmCheck;
+namespace App\Models\content\mulctCheck;
 
 use Illuminate\Database\Eloquent\Model;
 
-class whattodoItem3 extends Model
+class checkByLicense extends Model
 {
     // Связанная с моделью таблица
-    protected $table = 'co_kbm-check__whattodo-item-3';
+    protected $table = 'co_mulct-check__check-by-license';
 
     // make all attributes mass assignable, except 'id'
     protected $guarded = ['id'];

@@ -4,12 +4,6 @@ namespace App\Http\Controllers\content\kbmRestore;
 
 use App\Http\Controllers\Controller;
 use App\Models\content\kbmRestore\Page;
-use App\Models\content\kbmRestore\howToRestoreController;
-use App\Models\content\kbmRestore\restoreBySbController;
-use App\Models\content\kbmRestore\restoreByInsuranceController;
-use App\Models\content\kbmRestore\restoreByBrokerController;
-use App\Models\content\kbmRestore\restoreByRsaConrtroller;
-use App\Models\content\kbmRestore\restoreQuickContoller;
 use Illuminate\Http\Request;
 
 class PageController extends Controller

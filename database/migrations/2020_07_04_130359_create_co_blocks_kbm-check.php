@@ -29,23 +29,11 @@ class CreateCoBlocksKbmCheck extends Migration
             $table->integer('page_id')->default('1');
             $table->string('title')->nullable();
         });
-        Schema::create('co_kbm-check__whattodo-item-1', function (Blueprint $table) {
+        Schema::create('co_kbm-check__whattodo-item', function (Blueprint $table) {
             $table->id();
             $table->integer('page_id')->default('1');
             $table->string('title')->nullable();
             $table->string('link')->nullable();
-        });
-        Schema::create('co_kbm-check__whattodo-item-2', function (Blueprint $table) {
-            $table->id();
-            $table->integer('page_id')->default('1');
-            $table->string('link')->nullable();
-            $table->string('title')->nullable();
-        });
-        Schema::create('co_kbm-check__whattodo-item-3', function (Blueprint $table) {
-            $table->id();
-            $table->integer('page_id')->default('1');
-            $table->string('link')->nullable();
-            $table->string('title')->nullable();
         });
     }
 
@@ -58,8 +46,6 @@ class CreateCoBlocksKbmCheck extends Migration
     {
         Schema::dropIfExists('co_kbm-check__kbm-bonus-malus');
         Schema::dropIfExists('co_kbm-check__whattodo-title');
-        Schema::dropIfExists('co_kbm-check__whattodo-item-1');
-        Schema::dropIfExists('co_kbm-check__whattodo-item-2');
-        Schema::dropIfExists('co_kbm-check__whattodo-item-3');
+        Schema::dropIfExists('co_kbm-check__whattodo-item');
     }
 }
