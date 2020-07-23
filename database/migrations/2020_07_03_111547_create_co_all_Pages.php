@@ -73,6 +73,16 @@ class CreateCoAllPages extends Migration
             $table->string('name');
             $table->string('title')->nullable();
         });
+        Schema::create('co_all-pages__Calculator', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('title')->nullable();
+        });
+        Schema::create('co_all-pages__Polis-check-auth', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('title')->nullable();
+        });
     }
 
     /**
@@ -95,5 +105,7 @@ class CreateCoAllPages extends Migration
         Schema::dropIfExists('co_all-pages__User-agreement');
         Schema::dropIfExists('co_all-pages__Site-map');
         Schema::dropIfExists('co_all-pages__Our-offices');
+        Schema::dropIfExists('co_all-pages__Calculator');
+        Schema::dropIfExists('co_all-pages__polis-check-auth');
     }
 }

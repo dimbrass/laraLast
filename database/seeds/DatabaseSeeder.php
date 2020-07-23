@@ -19,5 +19,9 @@ class DatabaseSeeder extends Seeder
          $this->call(contentKbmRestoreSeeder::class);
          $this->call(contentMulctCheckSeeder::class);
          $this->call(contentUserAgreementSeeder::class);
+         
+         $this->call(contentCalculalorSeeder::class);
+         $this->call(contentTechInspectionSeeder::class);
+         $this->call(contentPolisCheckAuthSeeder::class);
     }
 }

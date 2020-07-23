@@ -23,18 +23,6 @@ class AllPagesSeeder extends Seeder
             'title' => 'Расчет ОСАГО',
             ],
         ]);
-        DB::table('co_all-pages__tech-inspection')->insert([
-            [
-            'name' => 'tech-inspection',   
-            'title' => 'Техосмотр', 
-            ],
-        ]);
-        DB::table('co_all-pages__tech-inspection-item')->insert([
-            [
-            'name' => 'tech-inspection-item',         
-            'title' => 'Страница одного пункта техосмотра',
-            ],
-        ]);
         DB::table('co_all-pages__kbm-check')->insert([
             [
             'name' => 'kbm-check',    
@@ -81,6 +69,24 @@ class AllPagesSeeder extends Seeder
             [
             'name' => 'our-offices',
             'title' => 'Наши офисы',    
+            ],
+        ]);
+        DB::table('co_all-pages__calculator')->insert([
+            [
+            'name' => 'calculator',
+            'title' => 'Калькулятор',    
+            ],
+        ]);
+        DB::table('co_all-pages__tech-inspection')->insert([
+            [
+            'name' => 'tech-inspection',   
+            'title' => 'Техосмотр', 
+            ],
+        ]);        
+        DB::table('co_all-pages__polis-check-auth')->insert([
+            [
+            'name' => 'polis-check-auth',
+            'title' => 'Проверка полиса на подлинность',    
             ],
         ]);
     }

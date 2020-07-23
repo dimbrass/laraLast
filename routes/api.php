@@ -63,3 +63,19 @@ Route::resources([
     'content/user-agreement/page-title' => 'content\userAgreement\pageTitleController',
     'content/user-agreement/text-block' => 'content\userAgreement\textBlockController',
 ]);
+Route::resources([
+    'content/calculator/page' => 'content\calculator\PageController',
+    'content/calculator/useful-info-top' => 'content\calculator\usefulInfoTopController',
+    'content/calculator/useful-info-item' => 'content\calculator\usefulInfoItemController',
+]);
+Route::resources([
+    'content/tech-inspection/page' => 'content\techInspection\PageController',
+    'content/tech-inspection/top' => 'content\techInspection\topController',
+    'content/tech-inspection/order' => 'content\techInspection\orderController',
+    'content/tech-inspection/order-item' => 'content\techInspection\orderItemController',
+]);
+Route::resources([
+    'content/polis-check-auth/page' => 'content\polisCheckAuth\PageController',
+    'content/polis-check-auth/top' => 'content\polisCheckAuth\TopController',
+    'content/polis-check-auth/item' => 'content\polisCheckAuth\ItemController',
+]);
