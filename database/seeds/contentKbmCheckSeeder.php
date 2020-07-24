@@ -33,5 +33,12 @@ class contentKbmCheckSeeder extends Seeder
             'link' => 'link1'
             ],
         ]);
+        DB::table('co_kbm-check__table')->insert([
+            [
+            'row_head1' => 'row_head1',
+            'row_head2' => 'row_head2',
+            'row_data' => 'row_data',
+            ],
+        ]);
     }
 }

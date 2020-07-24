@@ -38,6 +38,7 @@ Route::resources([
     'content/kbm-check/kbm-bonus-malus' => 'content\kbmCheck\kbmBonusMalusController',
     'content/kbm-check/whattodo-title' => 'content\kbmCheck\whattodoTitleController',
     'content/kbm-check/whattodo-item' => 'content\kbmCheck\whattodoItemController',
+    'content/kbm-check/table' => 'content\kbmCheck\tableController',
 ]);
 Route::resources([
     'content/kbm-restore/page' => 'content\kbmRestore\PageController',

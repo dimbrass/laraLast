@@ -22,16 +22,11 @@ class Page extends Model
     {
         return $this->hasOne('App\Models\content\kbm-check\whattodoTitle');
     }
-    public function whattodoItem_1()
+    public function whattodoItem()
     {
-        return $this->hasOne('App\Models\content\kbm-check\whattodoItem_1');
+        return $this->hasOne('App\Models\content\kbm-check\whattodoItem');
     }
-    public function whattodoItem_2()
+    public function table()
     {
-        return $this->hasOne('App\Models\content\kbm-check\whattodoItem_2');
+        return $this->hasOne('App\Models\content\kbm-check\table');
     }
-    public function whattodoItem_3()
-    {
-        return $this->hasOne('App\Models\content\kbm-check\whattodoItem_3');
-    }
-}

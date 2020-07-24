@@ -35,6 +35,13 @@ class CreateCoBlocksKbmCheck extends Migration
             $table->string('title')->nullable();
             $table->string('link')->nullable();
         });
+        Schema::create('co_kbm-check__table', function (Blueprint $table) {
+            $table->id();
+            $table->integer('page_id')->default('1');
+            $table->text('row_head1')->nullable();
+            $table->text('row_head2')->nullable();
+            $table->text('row_data')->nullable();
+        });
     }
 
     /**
@@ -47,5 +54,6 @@ class CreateCoBlocksKbmCheck extends Migration
         Schema::dropIfExists('co_kbm-check__kbm-bonus-malus');
         Schema::dropIfExists('co_kbm-check__whattodo-title');
         Schema::dropIfExists('co_kbm-check__whattodo-item');
+        Schema::dropIfExists('co_kbm-check__table');
     }
 }
